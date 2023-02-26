@@ -3,8 +3,6 @@ import Product from "./Product";
 
 const ProductList = (props) => {
 
-    console.log(props.products);
-
     const renderProducts = props.products.map((product) => {
         return (
             <li key={product.key} className="product">

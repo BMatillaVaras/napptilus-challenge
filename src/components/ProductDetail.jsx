@@ -18,19 +18,16 @@ const ProductDetail = (props) => {
         getProductDetail(params.id).then((data) => {
           setDetails(data);
           setLoading(false);
-          console.log(data);
         });
         
       }, [params.id]);
 
     const handleColorsChange = (e) => {
       setSelectedColor(e.target.value);
-      console.log(selectedColor);
     }
 
     const handleStorageChange = (e) => {
       setSelectedStorage(e.target.value);
-      console.log(selectedStorage);
     }
 
     const submitData = () => {
@@ -41,8 +38,7 @@ const ProductDetail = (props) => {
       }
       console.log(productSelected);
       postAddCart(productSelected).then((data) => {
-        props.setProductCount(data);
-        console.log(data);
+        props.setProductCount(data.count);
       });
     }
 
