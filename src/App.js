@@ -4,25 +4,34 @@ import ProductsView from './components/productsView';
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import ProductDetail from './components/ProductDetail';
+import { EXPIRE_TIME } from './utils/constants';
+import Loader from './components/general/loader';
 
 function App() {
 
   const [productList, setProductList] = useState();
+  const [loading, setLoading] = useState(true);
+  const [productCount, setProductCount] = useState();
 
   useEffect(() => {
-    getProducts().then((data) => {
-      setProductList(data);
-    });
+      getProducts().then((data) => {
+        setProductList(data);
+        setLoading(false);
+      });
+      
   }, []);
 
   return (
     <div className="app">
-      <h1>Listado de productos:</h1>
-      <Routes>
-        <Route exact path="/" element={<ProductsView products={productList}/>}/>
-        <Route path="product/:id" element={<ProductDetail/>}/>
-      </Routes>
+      {loading ? <Loader/> : 
+      <>
+        <Routes>
+          <Route exact path="/" element={<ProductsView products={productList}/>}/>
+          <Route path="product/:id" element={<ProductDetail setProductCount={setProductCount}/>}/>
+        </Routes>
+      </>
       
+      }
     </div>
   );
 }
