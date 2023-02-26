@@ -23,13 +23,17 @@ function App() {
       
   }, []);
 
-const termToFilter = search.toLowerCase().trim();
+  const termToFilter = search.toLowerCase().trim();
 
-const filteredList = productList && productList.filter((product) => {
-    const brand = product.brand.toLowerCase().trim();
-    const model = product.model.toLowerCase().trim();
-    return (brand.includes(termToFilter) || model.includes(termToFilter))
-});
+  const filteredList = productList && productList.filter((product) => {
+      const brand = product.brand.toLowerCase().trim();
+      const model = product.model.toLowerCase().trim();
+      return (brand.includes(termToFilter) || model.includes(termToFilter))
+  });
+
+  const noResults = search !== "" && filteredList.length === 0; 
+
+  const renderProducts = search !== "" ? filteredList : productList
 
   return (
     <div className="app">
@@ -37,7 +41,7 @@ const filteredList = productList && productList.filter((product) => {
       <>
       <Header productCount={productCount}/>
         <Routes>
-          <Route exact path="/" element={<ProductsView products={search.length < 1 ? productList : filteredList} search={search} setSearch={setSearch}/>}/>
+          <Route exact path="/" element={<ProductsView products={renderProducts} search={search} setSearch={setSearch} noResults={noResults}/>}/>
           <Route path="product/:id" element={<ProductDetail setProductCount={setProductCount}/>}/>
         </Routes>
       </>
