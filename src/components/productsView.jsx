@@ -18,7 +18,10 @@ const ProductsView = ({products, search, setSearch, noResults}) => {
                 </div>
                 
             </div>
-            {noResults ? <NoResults/> : <ProductList products={products}/>}
+            <article className="section--article">
+                {noResults ? <NoResults/> : <ProductList products={products}/>}
+            </article>
+            
 			
         </section>
     )
