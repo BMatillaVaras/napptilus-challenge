@@ -78,11 +78,11 @@ const ProductDetail = ({setProductCount, setCurrentPage, currentPage }) => {
                   </ul>
                   <h3>Actions</h3>
                   <div>
-                    <label for="Storage">Almacenamiento</label>
+                    <label htmlFor="Storage">Almacenamiento</label>
                     <select name="Storage" defaultValue={details.options.storages.length === 1 ? details.options.storages[0].code : null} onChange={handleStorageChange}>
                       {details.options.storages.map((option) => <option key={option.code} value={option.code}>{option.name}</option>)}
                     </select>
-                    <label for="Colors">Colores</label>
+                    <label htmlFor="Colors">Colores</label>
                     <select name="Colors" defaultValue={details.options.colors.length === 1 ? details.options.colors[0].code : null} onChange={handleColorsChange}>
                       {details.options.colors.map((option) => <option key={option.code} value={option.code}>{option.name}</option>)}
                     </select>

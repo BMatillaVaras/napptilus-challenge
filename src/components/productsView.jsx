@@ -13,7 +13,7 @@ const ProductsView = ({products, search, setSearch, noResults}) => {
             <div className="section--header">
                 <h1 className="section--header__title">Productos:</h1>
                 <div className="section--header__search">
-                    <label for="search" className="search--label">Busca por marca o modelo</label>
+                    <label htmlFor="search" className="search--label">Busca por marca o modelo</label>
                     <input name="search" onChange={handleSearch} value={search} placeholder="Introduce tu búsqueda" className="search--input"></input>
                 </div>
                 

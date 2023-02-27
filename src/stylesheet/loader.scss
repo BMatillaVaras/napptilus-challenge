@@ -1,0 +1,24 @@
+.loader {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &--title {
+        padding-bottom: 1rem;
+    }
+    &--text {
+        font-size: 0.8rem;
+    }
+}
+
+@media all and (min-width: 900px) {
+    .loader {
+        &--title {
+            font-size: 1.5;
+        }
+        &--text {
+            font-size: 1.2rem;
+        }
+    }
+}

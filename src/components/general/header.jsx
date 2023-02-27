@@ -9,7 +9,7 @@ export default function Header ({productCount, currentPage, setCurrentPage}) {
     <header className='header'>
         <Link to="/" className='header--link'>
             <img alt="logo de la tienda" src={logo} className="header--link__logo"/>
-            <h4>Napptilus Store</h4>
+            <h4 className="header--link__title">Napptilus Store</h4>
         </Link>
         <div className='header--navBar'>
             <Link to="/" className={`header--navBar__page ${currentPage === "catalogue" ? "selected" : ""}`} onClick={() => setCurrentPage("catalogue")}>

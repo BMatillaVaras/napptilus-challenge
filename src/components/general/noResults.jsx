@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import '../../stylesheet/noResults.scss';
 
 export default function NoResults() {
   return (
-    <p>No se han encontrado resultados</p>
+    <p className='noResults'>No se han encontrado resultados</p>
   )
 }

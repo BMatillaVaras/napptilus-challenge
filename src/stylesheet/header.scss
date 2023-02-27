@@ -14,6 +14,7 @@
         align-items: center;
         justify-content: space-around;
         text-decoration: none;
+        align-self: center;
         color: black;
         padding: 0.5rem;
         &__logo {
@@ -44,8 +45,30 @@
         display: flex;
         flex-direction: row;
         padding: 0.5rem 1rem;
+        align-self: center;
         &__icon {
             width: 1.5rem;
+        }
+    }
+}
+
+@media all and (min-width: 900px) {
+    .header {
+        height: 3.5rem;
+        &--link {
+            width: 16rem;
+            height: 2.5rem;
+            padding: 0.5rem 1.5rem;
+            &__title {
+                font-size: 1.5rem;
+            }
+        }
+        &--navBar {
+            &__page {
+                height: 2.5rem;
+                font-size: 1.25rem;
+                padding: 0.5rem 1rem;
+            }
         }
     }
 }

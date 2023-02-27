@@ -3,5 +3,33 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: pink;
+    background-color: rgb(234, 233, 233);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    &--img {
+        height: 6rem;
+    }
+    &--details {
+        width: 8.5rem;
+        height: 6rem;
+        &__brand {
+            font-size: 1rem;
+        }
+        &__model {
+            font-size: 0.8rem;
+        }
+        &__price {
+            font-size: 0.8rem;
+            padding-bottom: 1rem;
+        }
+        &__button {
+            margin: 1rem;
+            font-size: 0.8rem;
+            padding: 0.5rem;
+            background-color: rgb(211, 208, 208);
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: black;
+        }
+    }
 }
