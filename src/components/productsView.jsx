@@ -1,6 +1,7 @@
 import React from "react";
 import NoResults from "./general/noResults";
 import ProductList from "./productList";
+import "../stylesheet/productsView.scss";
 
 const ProductsView = ({products, search, setSearch, noResults}) => {
 
@@ -8,12 +9,12 @@ const ProductsView = ({products, search, setSearch, noResults}) => {
         setSearch(e.target.value);
     }
     return (
-        <section>
-            <div>
-                <h1>Productos:</h1>
-                <div>
-                    <label for="search">Busca por marca o modelo</label>
-                    <input name="search" onChange={handleSearch} value={search} placeholder="Introduce tu búsqueda"></input>
+        <section className="section">
+            <div className="section--header">
+                <h1 className="section--header__title">Productos:</h1>
+                <div className="section--header__search">
+                    <label for="search" className="search--label">Busca por marca o modelo</label>
+                    <input name="search" onChange={handleSearch} value={search} placeholder="Introduce tu búsqueda" className="search--input"></input>
                 </div>
                 
             </div>

@@ -1,0 +1,21 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    &--header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        &__title {
+            font-size: 1.25rem;
+        }
+        &__search {
+            width: 40%;
+            .search--label {
+                font-size: 0.75rem;
+            }
+            .search--input {
+                padding-left: 0.25rem;
+            }
+        }
+    }
+}

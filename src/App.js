@@ -49,7 +49,7 @@ function App() {
     <div className="app">
       {loading ? <Loader/> : 
       <>
-      <Header productCount={productCount} currentPage={currentPage}/>
+      <Header productCount={productCount} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         <Routes>
           <Route exact path="/" element={<ProductsView products={renderProducts} search={search} setSearch={setSearch} noResults={noResults}/>}/>
           <Route path="product/:id" element={<ProductDetail setProductCount={setProductCount} setCurrentPage={setCurrentPage} currentPage={currentPage}/>}/>
