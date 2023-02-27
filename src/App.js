@@ -4,9 +4,9 @@ import ProductsView from './components/productsView';
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import ProductDetail from './components/ProductDetail';
-import { EXPIRE_TIME } from './utils/constants';
 import Loader from './components/general/loader';
 import Header from './components/general/header';
+import { getLocalStorage } from './services/localStorage';
 
 function App() {
 
@@ -14,13 +14,23 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [productCount, setProductCount] = useState(0);
   const [search, setSearch]  = useState("");
+  const [currentPage, setCurrentPage] = useState();
 
   useEffect(() => {
+    const productsStorage = getLocalStorage('productsList');
+    if (productsStorage) {
+      setProductList(productsStorage);
+      setLoading(false);
+    } else {
       getProducts().then((data) => {
         setProductList(data);
         setLoading(false);
       });
-      
+    }
+  }, []);
+
+  useEffect(() => {
+      setCurrentPage("catalogue");
   }, []);
 
   const termToFilter = search.toLowerCase().trim();
@@ -39,10 +49,10 @@ function App() {
     <div className="app">
       {loading ? <Loader/> : 
       <>
-      <Header productCount={productCount}/>
+      <Header productCount={productCount} currentPage={currentPage}/>
         <Routes>
           <Route exact path="/" element={<ProductsView products={renderProducts} search={search} setSearch={setSearch} noResults={noResults}/>}/>
-          <Route path="product/:id" element={<ProductDetail setProductCount={setProductCount}/>}/>
+          <Route path="product/:id" element={<ProductDetail setProductCount={setProductCount} setCurrentPage={setCurrentPage} currentPage={currentPage}/>}/>
         </Routes>
       </>
       

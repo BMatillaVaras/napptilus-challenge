@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProductDetail, postAddCart } from "../services/api";
+import { getLocalStorage } from "../services/localStorage";
 import '../stylesheet/product.scss';
 import Loader from "./general/loader";
 
-const ProductDetail = (props) => {
+const ProductDetail = ({setProductCount, setCurrentPage, currentPage }) => {
 
     const params = useParams(); 
     
@@ -15,12 +16,21 @@ const ProductDetail = (props) => {
     
 
     useEffect(() => {
-        getProductDetail(params.id).then((data) => {
-          setDetails(data);
+        const detailsStorage = getLocalStorage(`productDetail_${params.id}`);
+        if(detailsStorage) {
+          setDetails(detailsStorage);
           setLoading(false);
-        });
-        
-      }, [params.id]);
+        } else {
+          getProductDetail(params.id).then((data) => {
+            setDetails(data);
+            setLoading(false);
+          });
+        }
+    }, [params.id]);
+
+    useEffect(() => {
+        setCurrentPage("detail");
+    }, []);
 
     const handleColorsChange = (e) => {
       setSelectedColor(e.target.value);
@@ -38,7 +48,7 @@ const ProductDetail = (props) => {
       }
       console.log(productSelected);
       postAddCart(productSelected).then((data) => {
-        props.setProductCount(data.count);
+        setProductCount(data.count);
       });
     }
 
@@ -80,7 +90,7 @@ const ProductDetail = (props) => {
                   <button onClick={submitData}>Añadir</button>
                 </div>
               </section>
-              <Link to="/">Volver atrás</Link>
+              <Link to="/" onClick={() => setCurrentPage("catalogue")}>Volver atrás</Link>
               
           </div>
       }
