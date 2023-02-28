@@ -6,7 +6,7 @@ import '../stylesheet/product.scss';
 import Loader from "./general/loader";
 import '../stylesheet/productDetail.scss';
 
-const ProductDetail = ({setProductCount, setCurrentPage, currentPage }) => {
+const ProductDetail = ({setProductCount, setCurrentPage, productCount }) => {
 
     const params = useParams(); 
     
@@ -47,9 +47,9 @@ const ProductDetail = ({setProductCount, setCurrentPage, currentPage }) => {
         colorCode: details.options.colors.length === 1 ? Number(details.options.colors[0].code) : Number(selectedColor),
         storageCode: details.options.storages.length === 1 ? Number(details.options.storages[0].code) : Number(selectedStorage)
       }
-      console.log(productSelected);
       postAddCart(productSelected).then((data) => {
-        setProductCount(data.count);
+        const numberOfProducts = productCount + data.count;
+        setProductCount(numberOfProducts);
       });
     }
 

@@ -10,7 +10,7 @@ const Product = (props) => {
                 <h3 className="productCard--details__brand">Marca: {props.brand}</h3>
                 <p className="productCard--details__model">Modelo: {props.model}</p>
                 <p className="productCard--details__price">Precio: {props.price}</p>
-                <Link to={`product/${props.id}`} className="productCard--details__button">Ver detalles:</Link>
+                <Link to={`product/${props.id}`} className="productCard--details__button">Ver detalles</Link>
             </div>
             
         </div>
