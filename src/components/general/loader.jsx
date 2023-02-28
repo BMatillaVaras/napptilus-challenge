@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../stylesheet/loader.scss'
+import React from "react";
+import "../../stylesheet/loader.scss";
 
 export default function Loader() {
   return (
@@ -7,6 +7,5 @@ export default function Loader() {
       <h3 className='loader--title'>Cargando...</h3>
       <p className='loader--text'>Espere un momento por favor</p>
     </div>
-    
-  )
+  );
 }
