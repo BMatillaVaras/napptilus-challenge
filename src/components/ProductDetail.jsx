@@ -57,7 +57,13 @@ const ProductDetail = ({setProductCount, setCurrentPage, currentPage }) => {
       <>
         {loading ? <Loader/> : 
         <article className="productDetails">
-              <h2 className="productDetails--title">Características</h2>
+          <div className="productDetails--header">
+            <h2 className="productDetails--header__title">Características</h2>
+            <Link to="/" onClick={() => setCurrentPage("catalogue")} className="productDetails--header__link">
+              Volver atrás
+            </Link>
+          </div>
+              
               <section className="productDetails--section">
                 <img src={details.imgUrl} alt="Imagen del producto" className="productDetails--section__img"/>
                 <div className="productDetails--section__details">
@@ -93,15 +99,13 @@ const ProductDetail = ({setProductCount, setCurrentPage, currentPage }) => {
                         </select>
                       </div>
                     </div>
-                    <button onClick={submitData}>Añadir</button>
+                    <button onClick={submitData} className="addButton">Añadir</button>
                     
                   </div>
                   
                   
                 </div>
-                <Link to="/" onClick={() => setCurrentPage("catalogue")}>
-                      Volver atrás
-                    </Link>
+                
               </section>
               
               
